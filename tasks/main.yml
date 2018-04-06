@@ -1,0 +1,16 @@
+---
+# tasks file for apigee-opdk-update-component-qpidd
+- name: Work around remove for Qpid upgrade
+  ignore_errors: yes
+  become: true
+  yum:
+    name: "{{ item }}"
+    state: absent
+  with_items: "{{ remove_components }}"
+
+- name: Work around install for Qpid upgrade
+  become: true
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ install_components }}"

@@ -1,0 +1,14 @@
+---
+# defaults file for apigee-opdk-update-component-qpidd
+remove_components:
+- qpid-cpp-server
+- qpid-cpp-server-linearstore
+- qpid-tools
+- qpid-qmf
+- python-qpid
+- qpid-cpp-client
+- qpid-proton-c
+
+install_components:
+- yum-plugin-priorities
+- apigee-qpidd
