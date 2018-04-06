@@ -11,10 +11,10 @@ None
 Role Variables
 --------------
 
-The `remove_components` collection is used to list those components that should be
+The `remove_qpid_upgrade_components` collection is used to list those components that should be
 removed prior to updating the system packages. The default list includes: 
 
-    remove_components:
+    remove_qpid_upgrade_components:
     - qpid-cpp-server
     - qpid-cpp-server-linearstore
     - qpid-tools
@@ -23,10 +23,10 @@ removed prior to updating the system packages. The default list includes:
     - qpid-cpp-client
     - qpid-proton-c
 
-The `install_components` collection is used to list those component that should be
+The `install_qpid_upgrade_components` collection is used to list those component that should be
 updated at the system. The default list includes: 
 
-    install_components:
+    install_qpid_upgrade_components:
     - yum-plugin-priorities
     - apigee-qpidd
 
