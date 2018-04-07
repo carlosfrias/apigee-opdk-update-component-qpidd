@@ -9,6 +9,7 @@
 
 - name: Work around install for Qpid upgrade
   become: true
+  become_user: root
   yum:
     name: "{{ item }}"
     state: present
