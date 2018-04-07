@@ -2,6 +2,7 @@
 # tasks file for apigee-opdk-update-component-qpidd
 - name: Work around remove for Qpid upgrade
   become: true
+  become_user: root
   yum:
     name: "{{ item }}"
     state: absent
@@ -9,7 +10,6 @@
 
 - name: Work around install for Qpid upgrade
   become: true
-  become_user: root
   yum:
     name: "{{ item }}"
     state: present
