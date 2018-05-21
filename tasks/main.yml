@@ -1,39 +1,19 @@
 ---
 # tasks file for apigee-opdk-update-component-qpidd
-- block:
-  - name: Install Apigee Qpid Component
-    tags: ['apigee-component']
-    import_role:
-      name: apigee-opdk-setup-component
-    vars:
-      profile: 'qs'
 
-  rescue:
-    - name: Work around remove for Qpid upgrade
-      become: true
-      become_user: root
-      yum:
-        name: "{{ item }}"
-        state: absent
-      with_items: "{{ remove_qpid_upgrade_components }}"
+- name: Work around remove for Qpid upgrade
+  become: true
+  become_user: root
+  yum:
+    name: "{{ item }}"
+    state: absent
+  with_items: "{{ remove_qpid_upgrade_components }}"
 
-    - name: Work around install for Qpid upgrade
-      become: true
-      become_user: root
-      yum:
-        name: "{{ item }}"
-        state: present
-      with_items: "{{ install_qpid_upgrade_components }}"
-
-#    - name: Use Apigee Qpid Work Around
-#      become: true
-#      shell: yum --setopt=obsoletes=0 install apigee-qpidd -y
-
-    - name: Install Apigee Qpid Component
-      tags: ['apigee-component']
-      import_role:
-        name: apigee-opdk-setup-component
-      vars:
-        profile: 'qs'
-
+- name: Work around install for Qpid upgrade
+  become: true
+  become_user: root
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ install_qpid_upgrade_components }}"
 
