@@ -25,9 +25,9 @@
         state: present
       with_items: "{{ install_qpid_upgrade_components }}"
 
-    - name: Use Apigee Qpid Work Around
-      become: true
-      shell: yum --setopt=obsoletes=0 install apigee-qpidd -y
+#    - name: Use Apigee Qpid Work Around
+#      become: true
+#      shell: yum --setopt=obsoletes=0 install apigee-qpidd -y
 
     - name: Install Apigee Qpid Component
       tags: ['apigee-component']
