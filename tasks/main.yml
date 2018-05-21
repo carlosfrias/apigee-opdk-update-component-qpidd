@@ -15,3 +15,30 @@
     name: "{{ item }}"
     state: present
   with_items: "{{ install_qpid_upgrade_components }}"
+
+- block:
+  - name: Install Apigee Qpid Component
+    tags: ['apigee-component']
+    import_role:
+      name: apigee-opdk-setup-component
+    vars:
+      profile: 'qs'
+
+  rescue:
+    - name: Use Apigee Qpid Work Around
+      become: true
+      shell: yum --setopt=obsoletes=0 install apigee-qpidd -y
+
+    - name: Install Apigee Qpid Component
+      tags: ['apigee-component']
+      import_role:
+        name: apigee-opdk-setup-component
+      vars:
+        profile: 'qs'
+
+- name: Start Apigee Qpid Component
+  tags: ['self']
+  import_role:
+    name: apigee-opdk-start-components
+  vars:
+    server_types: ['qs']
