@@ -5,15 +5,13 @@
   become: true
   become_user: root
   yum:
-    name: "{{ item }}"
+    name: "{{ remove_qpid_upgrade_components }}"
     state: absent
-  with_items: "{{ remove_qpid_upgrade_components }}"
 
 - name: Work around install for Qpid upgrade
   become: true
   become_user: root
   yum:
-    name: "{{ item }}"
+    name: "{{ install_qpid_upgrade_components }}"
     state: present
-  with_items: "{{ install_qpid_upgrade_components }}"
 
